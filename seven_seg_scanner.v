@@ -41,7 +41,7 @@ module seven_seg_scanner(
     // 1: RC Right Center
     // 2: LC Left Center
     // 3: L Left
-
+    
     assign anode[0] = state[1] | state[0];
     assign anode[1] = state[1] | ~state[0];
     assign anode[2] = ~state[1] | state[0];
