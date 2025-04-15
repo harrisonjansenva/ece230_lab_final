@@ -17,7 +17,8 @@ module top
     
 
     // Instantiate the clock divider...
-    clock_div modClock (
+    clock_div #(.DIVIDE_BY(DIVIDE_BY)) modClock (
+        
         .clock(clk),
         .reset(btnC),
         .div_clock(div_clock)
