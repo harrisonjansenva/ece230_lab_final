@@ -11,9 +11,50 @@ module top
     output [6:0] seg // 7seg segments
 );
 
+    wire div_clock;
+    wire [3:0] APlusB;
+    wire [3:0] AMinusB;
+    
+
     // Instantiate the clock divider...
+    clock_div modClock (
+        .clock(clk),
+        .reset(btnC),
+        .div_clock(div_clock)
+       );
+       
+    seven_seg_scanner ssc(
+        .div_clock(div_clock),
+        .reset(btnC),
+        .anode(an)
+        );
+        
+     math_block logic (
+        .A(sw[3:0]),
+        .B(sw[7:4]),
+        .AplusB(APlusB),
+        .AminusB(AMinusB)
+        );
+        
+        
+    seven_seg_decoder ssd (
+        .A(sw[3:0]),
+        .B(sw[7:4]),
+        .AplusB(APlusB),
+        .AminusB(AMinusB),
+        .anode(an),
+        .segs(seg)
+        );
+        
+        
+        
+    
+          
+    
     // ... wire it up to the scanner
     // ... wire the scanner to the decoder
+    
+    
 
     // Wire up the math block into the decoder
 
