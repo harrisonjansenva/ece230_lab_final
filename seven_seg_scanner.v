@@ -19,7 +19,7 @@ module seven_seg_scanner(
         .D(state[1] ^ state[0]),
         .Q(state[1]),
         .NotQ()
-    )
+    );
 
 
     // The state machine is a simple 2-bit counter that counts from 0 to 3
@@ -41,6 +41,7 @@ module seven_seg_scanner(
     // 1: RC Right Center
     // 2: LC Left Center
     // 3: L Left
+
     assign anode[0] = state[1] | state[0];
     assign anode[1] = state[1] | ~state[0];
     assign anode[2] = ~state[1] | state[0];
