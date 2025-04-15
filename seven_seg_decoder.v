@@ -7,13 +7,15 @@ module seven_seg_decoder(
     output reg [6:0] segs
 );
 
+reg [3:0] selected_sig;
+
 always @(*) begin
     case(anode)
-        4'b1110: selected_sig = A; // A
-        4'b1101: selected_sig = B; // B
-        4'b1011: selected_sig = AplusB; // A + B
-        4'b0111: selected_sig = AminusB; // A - B
-        default: selected_sig = 4'b0000; // Default case
+        4'b1110: selected_sig <= A; // A
+        4'b1101: selected_sig <= B; // B
+        4'b1011: selected_sig <= AplusB; // A + B
+        4'b0111: selected_sig <= AminusB; // A - B
+        default: selected_sig <= 4'b1111; // Default case
     endcase
 end
 
