@@ -3,7 +3,7 @@ module clock_div
 (
     input clock,
     input reset,
-    output reg div_clock
+    output div_clock
 );
 
     wire[DIVIDE_BY-1:0] q;
