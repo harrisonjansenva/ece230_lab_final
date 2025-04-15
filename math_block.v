@@ -8,20 +8,19 @@ module math_block(
     wire [3:0] Sum;
     wire [3:0] Diff;
 
-    // Instantiate the full adder for addition
+    
     full_adder adder (
         .A(A),
         .B(B),
-        .Cin(1'b0), // No carry in for addition
+        .Cin(1'b0), 
         .Sum(Sum),
         .Cout()
     );
-
-    // Instantiate the full adder for subtraction
+    
     full_adder subtractor (
         .A(A),
-        .B(~B), // Two's complement for subtraction
-        .Cin(1'b1), // Carry in for subtraction
+        .B(~B), 
+        .Cin(1'b1), 
         .Sum(Diff),
         .Cout()
     );
